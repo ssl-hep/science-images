@@ -4,3 +4,5 @@ vector==0.8.4
 pyarrow==9.0.0
 pandas
 requests
+stream-unzip
+httpx
