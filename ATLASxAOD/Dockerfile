@@ -1,7 +1,7 @@
 ARG ANALYSISBASE_TAG=21.2.231
 
 FROM atlas/analysisbase:$ANALYSISBASE_TAG
-
+FROM gitlab-registry.cern.ch/atlas/athena/analysisbase:$ANALYSISBASE_TAG
 USER root
 
 RUN yum clean all
