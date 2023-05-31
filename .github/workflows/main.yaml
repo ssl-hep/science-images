@@ -18,7 +18,7 @@ jobs:
           image: ivukotic/servicex_func_adl_xaod_transformer
           tags: latest, ${{ github.sha }}
           registry: docker.io
-          dockerfile: ATLASxAOD/Dockerfile
+          directory: ATLASxAOD
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
