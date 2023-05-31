@@ -4,7 +4,7 @@ USER root
 
 RUN yum clean all
 RUN yum -y update
-RUN yum -y install nc
+RUN yum -y install nc jq
 
 # Install everything needed to host/run the analysis jobs
 WORKDIR /servicex
