@@ -12,13 +12,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3.5.2
 
-      - name: Docker Build & Push Action
-        uses: mr-smithers-excellent/docker-build-push@v6.2
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
         with:
-          image: ivukotic/servicex_func_adl_xaod_transformer
-          tags: latest, ${{ github.sha }}
-          registry: docker.io
-          directory: ATLASxAOD
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: ATLASxAOD
+          push: true
+          tags: ivukotic/servicex_func_adl_xaod_transformer:latest
