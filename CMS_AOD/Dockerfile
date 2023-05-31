@@ -2,6 +2,10 @@ FROM cmsopendata/cmssw_5_3_32:latest
 
 USER root
 
+RUN yum clean all
+RUN yum -y update
+RUN yum -y install nc
+
 # Install everything needed to host/run the analysis jobs
 WORKDIR /servicex
 
