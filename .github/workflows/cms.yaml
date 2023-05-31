@@ -1,4 +1,4 @@
-name: Builds Uproot image
+name: Builds CMS AOD images
 
 on:
   push:
@@ -25,6 +25,6 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: uproot
+          context: CMS_AOD
           push: true
-          tags: ivukotic/servicex_func_adl_uproot_transformer:uproot4 
+          tags: ivukotic/servicex_func_adl_cms_aod_transformer:cmssw-5-3-32

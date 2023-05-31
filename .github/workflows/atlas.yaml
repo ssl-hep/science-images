@@ -1,4 +1,4 @@
-name: Builds perfsonar pull collector image
+name: Builds ATLAS xAOD images
 
 on:
   push:
@@ -37,18 +37,3 @@ jobs:
           push: true
           build-args: ANALYSISBASE_TAG=22.2.107
           tags: ivukotic/servicex_func_adl_xaod_transformer:22.2.107
-
-      - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          context: CMS_AOD
-          push: true
-          tags: ivukotic/servicex_func_adl_cms_aod_transformer:cmssw-5-3-32
-
-  
-      - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          context: uproot
-          push: true
-          tags: ivukotic/servicex_func_adl_uproot_transformer:uproot4 

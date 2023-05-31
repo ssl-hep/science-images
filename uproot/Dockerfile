@@ -8,7 +8,7 @@ RUN apt-get update -y && apt-get install gnupg2 netcat jq -y
 RUN conda install --yes \
     -c conda-forge \
     conda-build \
-    xrootd==5.5.5 \
+    xrootd==5.4.3 \
     && conda build purge-all && conda clean -ti
 
 RUN apt update && \
