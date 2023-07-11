@@ -1,9 +1,10 @@
 name: Builds Uproot image
+# These actions need some more work.
 
 on:
   push:
     branches:
-      - "ilija"
+      - "disabled"
 
 jobs:
   docker:

@@ -1,9 +1,12 @@
 name: Builds CMS AOD images
+# These actions need some more work. It would be good to parameterize
+# the CMS Base version, and to have a way to build the
+# images to specific versions
 
 on:
   push:
     branches:
-      - "ilija"
+      - "disabled"
 
 jobs:
   docker:

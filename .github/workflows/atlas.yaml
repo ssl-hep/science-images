@@ -1,9 +1,11 @@
 name: Builds ATLAS xAOD images
-
+# These actions need some more work. It would be good to parameterize
+# the Atlas Analysis Base version, and to have a way to build the
+# images to specific versions
 on:
   push:
     branches:
-      - "ilija"
+      - "disabled"
 
 jobs:
   docker:
@@ -28,7 +30,7 @@ jobs:
           context: ATLASxAOD
           push: true
           build-args: ANALYSISBASE_TAG=21.2.231 
-          tags: ivukotic/servicex_func_adl_xaod_transformer:21.2.231
+          tags: sslhep/servicex_func_adl_xaod_transformer:21.2.231
       
       - name: Build and push
         uses: docker/build-push-action@v3
@@ -36,4 +38,4 @@ jobs:
           context: ATLASxAOD
           push: true
           build-args: ANALYSISBASE_TAG=22.2.107
-          tags: ivukotic/servicex_func_adl_xaod_transformer:22.2.107
+          tags: sslhep/servicex_func_adl_xaod_transformer:22.2.107
