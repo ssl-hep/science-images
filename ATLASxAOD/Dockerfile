@@ -6,6 +6,7 @@ USER root
 
 RUN yum clean all
 RUN yum -y update
+RUN yum -y install nc jq
 
 RUN yum install -y https://repo.opensciencegrid.org/osg/3.5/osg-3.5-el7-release-latest.rpm
 RUN curl -s -o /etc/pki/rpm-gpg/RPM-GPG-KEY-wlcg http://linuxsoft.cern.ch/wlcg/RPM-GPG-KEY-wlcg

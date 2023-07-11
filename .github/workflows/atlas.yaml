@@ -1,0 +1,41 @@
+name: Builds ATLAS xAOD images
+# These actions need some more work. It would be good to parameterize
+# the Atlas Analysis Base version, and to have a way to build the
+# images to specific versions
+on:
+  push:
+    branches:
+      - "disabled"
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.2
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: ATLASxAOD
+          push: true
+          build-args: ANALYSISBASE_TAG=21.2.231 
+          tags: sslhep/servicex_func_adl_xaod_transformer:21.2.231
+      
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: ATLASxAOD
+          push: true
+          build-args: ANALYSISBASE_TAG=22.2.107
+          tags: sslhep/servicex_func_adl_xaod_transformer:22.2.107

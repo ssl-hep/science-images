@@ -3,7 +3,7 @@
 # FROM daskdev/dask:2.9.0
 FROM continuumio/miniconda3:4.12.0
 
-RUN apt-get update -y && apt-get install gnupg2 -y
+RUN apt-get update -y && apt-get install gnupg2 netcat jq -y
 
 RUN conda install --yes \
     -c conda-forge \
@@ -17,8 +17,8 @@ RUN apt update && \
 
 RUN mkdir -p /etc/grid-security/
 RUN export X509_CERT_DIR=/etc/grid-security/certificates/
-RUN wget https://repo.opensciencegrid.org/cadist/1.110NEW/osg-certificates-1.110NEW.tar.gz
-RUN tar -xvf osg-certificates-1.110NEW.tar.gz -C /etc/grid-security/
+RUN wget https://repo.opensciencegrid.org/cadist/1.121IGTFNEW/osg-certificates-1.121IGTFNEW.tar.gz
+RUN tar -xvf osg-certificates-1.121IGTFNEW.tar.gz -C /etc/grid-security/
 
 RUN useradd -ms /bin/bash output -G sudo && passwd -d output
 RUN mkdir -p /etc/grid-security/certificates /etc/grid-security/vomsdir
