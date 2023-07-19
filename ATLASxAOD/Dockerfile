@@ -19,6 +19,7 @@ RUN mkdir -p /etc/grid-security/certificates /etc/grid-security/vomsdir
 WORKDIR /servicex
 COPY bashrc /servicex/.bashrc
 COPY bashrc /servicex/.bash_profile
+ADD gai.conf /etc/gai.conf
 
 # Turn this on so that stdout isn't buffered - otherwise logs in kubectl don't
 # show up until much later!

@@ -6,6 +6,8 @@ RUN yum clean all
 RUN yum -y update
 RUN yum -y install nc jq
 
+ADD gai.conf /etc/gai.conf
+
 # Install everything needed to host/run the analysis jobs
 WORKDIR /servicex
 

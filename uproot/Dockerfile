@@ -23,6 +23,8 @@ RUN tar -xvf osg-certificates-1.121IGTFNEW.tar.gz -C /etc/grid-security/
 RUN useradd -ms /bin/bash output -G sudo && passwd -d output
 RUN mkdir -p /etc/grid-security/certificates /etc/grid-security/vomsdir
 
+ADD gai.conf /etc/gai.conf
+
 COPY requirements.txt .
 RUN /opt/conda/bin/pip install safety==1.9.0
 
