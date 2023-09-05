@@ -4,7 +4,7 @@ name: Builds Uproot image
 on:
   push:
     branches:
-      - "disabled"
+      - "main"
 
 jobs:
   docker:
