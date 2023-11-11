@@ -24,18 +24,26 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push
+      - name: Build and push R21
         uses: docker/build-push-action@v3
         with:
           context: ATLASxAOD
           push: true
-          build-args: ANALYSISBASE_TAG=21.2.231 
-          tags: sslhep/servicex_func_adl_xaod_transformer:21.2.231
-      
-      - name: Build and push
+          build-args: ANALYSISBASE_TAG=21.2.266
+          tags: sslhep/servicex_func_adl_xaod_transformer:21.2.266
+
+      - name: Build and push R22
         uses: docker/build-push-action@v3
         with:
           context: ATLASxAOD
           push: true
-          build-args: ANALYSISBASE_TAG=22.2.107
-          tags: sslhep/servicex_func_adl_xaod_transformer:22.2.107
+          build-args: ANALYSISBASE_TAG=22.2.113
+          tags: sslhep/servicex_func_adl_xaod_transformer:22.2.113
+
+      - name: Build and push R24
+        uses: docker/build-push-action@v3
+        with:
+          context: ATLASxAOD
+          push: true
+          build-args: ANALYSISBASE_TAG=24.2.26
+          tags: sslhep/servicex_func_adl_xaod_transformer:24.2.26
