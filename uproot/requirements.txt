@@ -1,4 +1,5 @@
-uproot==4.3.7
-awkward==1.10.1
-vector==0.8.4
-pyarrow==9.0.0
+uproot==5.1.2
+awkward==2.5.0
+dask-awkward==2023.11.3
+vector==1.1.1.post1
+pyarrow==14.0.1
