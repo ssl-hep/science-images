@@ -28,4 +28,4 @@ jobs:
         with:
           context: uproot
           push: true
-          tags: ivukotic/servicex_func_adl_uproot_transformer:uproot5
+          tags: sslhep/servicex_func_adl_uproot_transformer:uproot5
