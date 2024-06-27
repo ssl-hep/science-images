@@ -1,14 +1,14 @@
 # based on https://github.com/dask/dask-docker/blob/master/base/Dockerfile
 # but more permissive about image size due to read-only requirement in openshift
 # FROM daskdev/dask:2.9.0
-FROM continuumio/miniconda3:4.12.0
+FROM continuumio/miniconda3:24.5.0
 
 RUN apt-get update -y && apt-get install gnupg2 netcat jq -y
 
 RUN conda install --yes \
     -c conda-forge \
     conda-build \
-    xrootd==5.4.3 \
+    xrootd==5.6.9 \
     && conda build purge-all && conda clean -ti
 
 RUN apt update && \
@@ -17,8 +17,8 @@ RUN apt update && \
 
 RUN mkdir -p /etc/grid-security/
 RUN export X509_CERT_DIR=/etc/grid-security/certificates/
-RUN wget https://repo.opensciencegrid.org/cadist/1.126IGTFNEW/osg-certificates-1.126IGTFNEW.tar.gz
-RUN tar -xvf osg-certificates-1.126IGTFNEW.tar.gz -C /etc/grid-security/
+RUN wget https://repo.opensciencegrid.org/cadist/1.129IGTFNEW/osg-certificates-1.129IGTFNEW.tar.gz
+RUN tar -xvf osg-certificates-1.129IGTFNEW.tar.gz -C /etc/grid-security/
 
 RUN useradd -ms /bin/bash output -G sudo && passwd -d output
 RUN mkdir -p /etc/grid-security/certificates /etc/grid-security/vomsdir
