@@ -17,7 +17,7 @@ RUN apt update && \
 
 RUN mkdir -p /etc/grid-security/
 RUN export X509_CERT_DIR=/etc/grid-security/certificates/
-RUN wget https://repo.opensciencegrid.org/cadist/1.126IGTFNEW/osg-certificates-1.128IGTFNEW.tar.gz
+RUN wget https://repo.opensciencegrid.org/cadist/1.128IGTFNEW/osg-certificates-1.128IGTFNEW.tar.gz
 RUN tar -xvf osg-certificates-1.128IGTFNEW.tar.gz -C /etc/grid-security/
 
 RUN useradd -ms /bin/bash output -G sudo && passwd -d output
