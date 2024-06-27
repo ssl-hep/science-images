@@ -3,7 +3,7 @@
 # FROM daskdev/dask:2.9.0
 FROM continuumio/miniconda3:24.5.0-0
 
-RUN apt-get update -y && apt-get install gnupg2 netcat jq -y
+RUN apt-get update -y && apt-get install gnupg2 netcat-traditional jq -y
 
 RUN conda install --yes \
     -c conda-forge \
