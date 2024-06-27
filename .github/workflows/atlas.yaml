@@ -4,8 +4,6 @@ name: Builds ATLAS xAOD images
 # images to specific versions
 on:
   push:
-    branches:
-      - "main"
 
 jobs:
   docker:
@@ -24,11 +22,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push
+      - name: Build only for CI
         uses: docker/build-push-action@v3
         with:
           context: ATLASxAOD
-          push: true
+          push: ${{ github.ref == 'refs/heads/main' }}
           build-args: ANALYSISBASE_TAG=21.2.231 
           tags: sslhep/servicex_func_adl_xaod_transformer:21.2.231
           platforms: linux/amd64,linux/arm64
@@ -37,7 +35,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ATLASxAOD
-          push: true
+          push: ${{ github.ref == 'refs/heads/main' }}
           build-args: ANALYSISBASE_TAG=22.2.107
           tags: sslhep/servicex_func_adl_xaod_transformer:22.2.107
           platforms: linux/amd64,linux/arm64

@@ -5,8 +5,6 @@ name: Builds CMS AOD images
 
 on:
   push:
-    branches:
-      - "main"
 
 jobs:
   docker:
@@ -29,6 +27,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: CMS_AOD
-          push: true
+          push: ${{ github.ref == 'refs/heads/main' }}
           tags: sslhep/servicex_func_adl_cms_aod_transformer:cmssw-5-3-32
           platforms: linux/amd64,linux/arm64
