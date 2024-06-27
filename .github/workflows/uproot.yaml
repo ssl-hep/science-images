@@ -3,8 +3,6 @@ name: Builds Uproot image
 
 on:
   push:
-    branches:
-      - "main"
 
 jobs:
   docker:
@@ -27,6 +25,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: uproot
-          push: true
+          push: ${{ github.ref == 'refs/heads/main' }}
           tags: sslhep/servicex_func_adl_uproot_transformer:uproot5
           platforms: linux/amd64,linux/arm64
