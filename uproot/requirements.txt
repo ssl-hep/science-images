@@ -1,4 +1,4 @@
-uproot==5.3.9
+uproot[xrootd]==5.3.9
 awkward==2.6.6
 dask-awkward==2024.6.0
 vector==1.4.1

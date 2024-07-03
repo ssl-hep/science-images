@@ -181,7 +181,12 @@ fsspec==2024.6.1 \
     # via
     #   awkward
     #   dask
+    #   fsspec-xrootd
     #   uproot
+fsspec-xrootd==0.3.0 \
+    --hash=sha256:3a146f9c0784d21b5b269981cd394d3d521e273d50dbd71b8315d70bd6078ddd \
+    --hash=sha256:bef5ca97c6095cd807a6979a070ff6b56b1145133768a420e078f6b2883140fd
+    # via uproot
 locket==1.0.0 \
     --hash=sha256:5c0d4c052a8bbbf750e056a8e65ccd309086f4f0f18a2eac306a8dfa4112a632 \
     --hash=sha256:b6c819a722f7b6bd955b80781788e4a66a55628b858d347536b7e81325a3a5e3
