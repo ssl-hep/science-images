@@ -26,10 +26,15 @@ RUN mkdir -p /etc/grid-security/certificates /etc/grid-security/vomsdir
 ADD gai.conf /etc/gai.conf
 
 COPY requirements.txt .
+COPY requirements.lock .
 RUN /opt/conda/bin/pip install safety==1.9.0
 
-RUN safety check -r requirements.txt -i 44715 -i44716 -i 44717
-RUN /opt/conda/bin/pip install --no-cache-dir -r requirements.txt
+RUN safety check -r requirements.lock -i 44715 -i44716 -i 44717
+RUN /opt/conda/bin/pip --no-cache-dir install \
+    --upgrade \
+    --no-deps \
+    --require-hashes \
+    --requirement requirements.lock
 
 WORKDIR /servicex
 COPY proxy-exporter.sh .
