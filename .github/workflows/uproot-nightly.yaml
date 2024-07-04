@@ -1,0 +1,26 @@
+name: Builds Uproot image to check certificates are OK
+# These actions need some more work.
+
+on:
+  schedule:
+    - cron: "0 23 * * *"
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.2
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build
+        uses: docker/build-push-action@v3
+        with:
+          context: uproot
+          push: false
+          tags: sslhep/servicex_func_adl_uproot_transformer:uproot5
+          platforms: linux/amd64,linux/arm64
