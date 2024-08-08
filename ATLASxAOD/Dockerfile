@@ -4,15 +4,15 @@ FROM atlas/analysisbase:$ANALYSISBASE_TAG
 FROM gitlab-registry.cern.ch/atlas/athena/analysisbase:$ANALYSISBASE_TAG
 USER root
 
-RUN yum clean all
-RUN yum -y update
-RUN yum -y install nc jq
-
-RUN yum install -y https://repo.opensciencegrid.org/osg/3.6/osg-3.6-el7-release-latest.rpm
-RUN curl -s -o /etc/pki/rpm-gpg/RPM-GPG-KEY-wlcg http://linuxsoft.cern.ch/wlcg/RPM-GPG-KEY-wlcg
-RUN curl -s -o /etc/yum.repos.d/wlcg-centos7.repo http://linuxsoft.cern.ch/wlcg/wlcg-centos7.repo;
-RUN yum install -y xrootd-client xrootd \
-    xrootd-voms voms-clients wlcg-voms-atlas osg-ca-certs
+RUN sed -i -e 's/linuxsoft.cern.ch/archives.fedoraproject.org\/pub\/archive/g' /etc/yum.repos.d/epel.repo
+RUN curl -s -o /etc/pki/rpm-gpg/RPM-GPG-KEY-wlcg https://linuxsoft.cern.ch/wlcg/RPM-GPG-KEY-wlcg \
+    && curl -s -o /etc/yum.repos.d/wlcg-centos7.repo http://linuxsoft.cern.ch/wlcg/wlcg-centos7.repo
+RUN yum install -y https://repo.opensciencegrid.org/osg/3.6/osg-3.6-el7-release-latest.rpm \
+    && yum -y update \
+    && yum -y install nc jq \
+    && yum install -y xrootd-client xrootd \
+        xrootd-voms voms-clients wlcg-voms-atlas osg-ca-certs \
+    && yum clean all
 
 # Install everything needed to host/run the analysis jobs
 RUN mkdir -p /etc/grid-security/certificates /etc/grid-security/vomsdir
