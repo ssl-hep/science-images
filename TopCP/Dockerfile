@@ -24,5 +24,6 @@ ENV X509_USER_PROXY=/tmp/x509_proxy
 
 RUN chmod +x /TopCPToolkit/build/x86_64-el9-gcc13-opt/setup.sh
 
+COPY ./boot.bash_profile /
 COPY ./boot.sh /
 # ENTRYPOINT ["/boot.sh"]
