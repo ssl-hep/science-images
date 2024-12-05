@@ -7,6 +7,7 @@ USER root
 
 RUN yum update -y
 RUN yum install -y https://repo.opensciencegrid.org/osg/3.6/osg-3.6-el9-release-latest.rpm && yum install -y osg-ca-certs 
+RUN yum install nc
 
 COPY ./TopCPToolkit /TopCPToolkit
 WORKDIR /TopCPToolkit
@@ -24,4 +25,4 @@ ENV X509_USER_PROXY=/tmp/x509_proxy
 RUN chmod +x /TopCPToolkit/build/x86_64-el9-gcc13-opt/setup.sh
 
 COPY ./boot.sh /
-ENTRYPOINT ["/boot.bash_profile"]
+# ENTRYPOINT ["/boot.sh"]
