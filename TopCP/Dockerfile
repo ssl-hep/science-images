@@ -7,7 +7,7 @@ USER root
 
 RUN yum update -y
 RUN yum install -y https://repo.opensciencegrid.org/osg/3.6/osg-3.6-el9-release-latest.rpm && yum install -y osg-ca-certs 
-RUN yum install nc
+RUN yum install -y nc
 
 COPY ./TopCPToolkit /TopCPToolkit
 WORKDIR /TopCPToolkit
