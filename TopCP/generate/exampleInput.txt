@@ -1,0 +1,1 @@
+root://xrootd.aglt2.org:1094//pnfs/aglt2.org/atlasdatadisk/rucio/mc20_13TeV/d4/32/DAOD_PHYS.37620644._000804.pool.root.1
