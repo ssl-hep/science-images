@@ -30,7 +30,7 @@ ENV RUN_LOC="/TopCPToolkit/generate"
 ENV CONFIG_LOC="/TopCPToolkit/source/TopCPToolkit/share/configs/customConfig"
 RUN mkdir -p $CONFIG_LOC
 
-ENV X509_USER_PROXY=/tmp/x509_proxy
+ENV X509_USER_PROXY=/tmp/grid-security/x509_proxy
 
 WORKDIR /TopCPToolkit/build
 
