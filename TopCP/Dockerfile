@@ -1,30 +1,44 @@
-# use AnalysisBase:25.2.14 as base image. Will be dynamic in the future
-ARG BASE_IMAGE=gitlab-registry.cern.ch/atlas/athena/analysisbase:25.2.14
-FROM ${BASE_IMAGE} AS base
+# syntax=docker/dockerfile:1
+
+# This is the default AnalysisBase version
+ARG ANALYSIS_BASE_VERSION="25.2.38" 
+FROM gitlab-registry.cern.ch/atlas/athena/analysisbase:${ANALYSIS_BASE_VERSION} AS base
+
+ARG TOPCPTOOLKIT_TAG="v2.15.1"
+ARG TOPCPTOOLKIT_BRANCH="main"
 
 SHELL [ "/bin/bash", "-c" ]
+
+USER root
 
 RUN yum update -y
 RUN yum install -y https://repo.opensciencegrid.org/osg/3.6/osg-3.6-el9-release-latest.rpm && yum install -y osg-ca-certs 
 RUN yum install -y nc
 
-# Import TopCPToolkit from local filesystem
-COPY ./TopCPToolkit /TopCPToolkit
+# download TopCPToolkit repo
+WORKDIR /
+RUN --mount=type=secret,id=GIT_KEY,env=GIT_KEY\
+    git clone https://${GIT_KEY}@gitlab.cern.ch/atlasphys-top/reco/TopCPToolkit.git
 WORKDIR /TopCPToolkit
+RUN    git checkout tags/${TOPCPTOOLKIT_TAG}
 
 # Make /TopCPToolkit/generate directory where runTop_el.py is executed
 RUN mkdir -p generate
-ENV RUN_LOC "/TopCPToolkit/generate"
-WORKDIR $RUN_LOC
+ENV RUN_LOC="/TopCPToolkit/generate"
 
 # Define config location where user defined YAML files will reside
-ENV CONFIG_LOC "/TopCPToolkit/source/TopCPToolkit/share/configs/customConfig"
+ENV CONFIG_LOC="/TopCPToolkit/source/TopCPToolkit/share/configs/customConfig"
 RUN mkdir -p $CONFIG_LOC
 
 ENV X509_USER_PROXY=/tmp/x509_proxy
 
-RUN chmod +x /TopCPToolkit/build/x86_64-el9-gcc13-opt/setup.sh
+WORKDIR /TopCPToolkit/build
 
-USER servicex
+RUN source /release_setup.sh && \
+    cmake ../source && \
+    source */setup.sh && \
+    make -j4
 
-COPY ./boot.bash_profile /
+WORKDIR $RUN_LOC
+
+COPY ./boot.bash_profile /root/.bashrc
