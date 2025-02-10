@@ -1,4 +1,4 @@
-ARG ANALYSISBASE_TAG=21.2.231
+ARG ANALYSISBASE_TAG=25.2.38
 
 FROM atlas/analysisbase:$ANALYSISBASE_TAG
 FROM gitlab-registry.cern.ch/atlas/athena/analysisbase:$ANALYSISBASE_TAG
@@ -6,8 +6,8 @@ USER root
 
 RUN sed -i -e 's/linuxsoft.cern.ch/archives.fedoraproject.org\/pub\/archive/g' /etc/yum.repos.d/epel.repo
 RUN curl -s -o /etc/pki/rpm-gpg/RPM-GPG-KEY-wlcg https://linuxsoft.cern.ch/wlcg/RPM-GPG-KEY-wlcg \
-    && curl -s -o /etc/yum.repos.d/wlcg-centos7.repo http://linuxsoft.cern.ch/wlcg/wlcg-centos7.repo
-RUN yum install -y https://repo.opensciencegrid.org/osg/3.6/osg-3.6-el7-release-latest.rpm \
+    && curl -s -o /etc/yum.repos.d/wlcg-el9.repo http://linuxsoft.cern.ch/wlcg/wlcg-el9.repo
+RUN yum install -y https://repo.opensciencegrid.org/osg/3.6/osg-3.6-el9-release-latest.rpm \
     && yum -y update \
     && yum -y install nc jq \
     && yum install -y xrootd-client xrootd \
