@@ -1,13 +1,27 @@
-ARG ANALYSISBASE_TAG=21.2.231
+ARG ANALYSISBASE_TAG=25.2.38
 
 FROM atlas/analysisbase:$ANALYSISBASE_TAG
 FROM gitlab-registry.cern.ch/atlas/athena/analysisbase:$ANALYSISBASE_TAG
+ARG EL=9
+
 USER root
 
-RUN sed -i -e 's/linuxsoft.cern.ch/archives.fedoraproject.org\/pub\/archive/g' /etc/yum.repos.d/epel.repo
+RUN if [[ $EL == 7 ]] ; then { \
+        sed -i -e 's/linuxsoft.cern.ch/archives.fedoraproject.org\/pub\/archive/g' /etc/yum.repos.d/epel.repo ; \
+    } ; else { \
+        dnf install -y epel-release ; \
+    } ; fi
 RUN curl -s -o /etc/pki/rpm-gpg/RPM-GPG-KEY-wlcg https://linuxsoft.cern.ch/wlcg/RPM-GPG-KEY-wlcg \
-    && curl -s -o /etc/yum.repos.d/wlcg-centos7.repo http://linuxsoft.cern.ch/wlcg/wlcg-centos7.repo
-RUN yum install -y https://repo.opensciencegrid.org/osg/3.6/osg-3.6-el7-release-latest.rpm \
+    && if [[ $EL == 7 ]] ; then { \
+      curl -s -o /etc/yum.repos.d/wlcg-centos7.repo http://linuxsoft.cern.ch/wlcg/wlcg-centos7.repo ; \
+    } ; else { \
+        curl -s -o /etc/yum.repos.d/wlcg-el${EL}.repo http://linuxsoft.cern.ch/wlcg/wlcg-el${EL}.repo ; \
+    } ; fi
+RUN if [[ $EL == 7 ]] ; then { \
+        yum install -y https://repo.opensciencegrid.org/osg/3.6/osg-3.6-el${EL}-release-latest.rpm  ; \
+    } ; else { \
+        yum install -y https://repo.osg-htc.org/osg/24-main/osg-24-main-el9-release-latest.rpm ; \
+    } ; fi \
     && yum -y update \
     && yum -y install nc jq \
     && yum install -y xrootd-client xrootd \
@@ -28,6 +42,6 @@ ENV INSTANCE="atlas_xaod_cpp_transformer"
 ENV DESC="ATLAS xAOD CPP Transformer"
 
 ENV X509_USER_PROXY=/tmp/grid-security/x509up
-ENV X509_CERT_DIR /etc/grid-security/certificates
+ENV X509_CERT_DIR=/etc/grid-security/certificates
 
 WORKDIR /home/atlas
