@@ -27,7 +27,9 @@ jobs:
         with:
           context: ATLASxAOD
           push: ${{ github.ref == 'refs/heads/main' }}
-          build-args: ANALYSISBASE_TAG=21.2.231 
+          build-args: |
+            ANALYSISBASE_TAG=21.2.231
+            EL=7
           tags: sslhep/servicex_func_adl_xaod_transformer:21.2.231
           platforms: linux/amd64
       
@@ -36,6 +38,19 @@ jobs:
         with:
           context: ATLASxAOD
           push: ${{ github.ref == 'refs/heads/main' }}
-          build-args: ANALYSISBASE_TAG=22.2.107
+          build-args: |
+            ANALYSISBASE_TAG=22.2.107
+            EL=7
           tags: sslhep/servicex_func_adl_xaod_transformer:22.2.107
+          platforms: linux/amd64
+
+      - name: Build and push R25
+        uses: docker/build-push-action@v3
+        with:
+          context: ATLASxAOD
+          push: ${{ github.ref == 'refs/heads/main' }}
+          build-args: |
+            ANALYSISBASE_TAG=25.2.41
+            EL=9
+          tags: sslhep/servicex_func_adl_xaod_transformer:25.2.41
           platforms: linux/amd64
