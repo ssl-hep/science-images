@@ -7,7 +7,8 @@ ARG EL=9
 USER root
 
 RUN if [[ $EL == 7 ]] ; then { \
-        sed -i -e 's/linuxsoft.cern.ch/archives.fedoraproject.org\/pub\/archive/g' /etc/yum.repos.d/epel.repo ; \
+        sed -i -e 's/linuxsoft.cern.ch\/internal/dl.fedoraproject.org\/pub/g' /etc/yum.repos.d/epel.repo ; \
+        sed -i -e 's/linuxsoft.cern.ch\/epel/dl.fedoraproject.org\/pub\/archive\/epel/g' /etc/yum.repos.d/epel.repo ; \
     } ; else { \
         dnf install -y epel-release ; \
     } ; fi
