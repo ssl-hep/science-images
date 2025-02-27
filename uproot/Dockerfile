@@ -2,6 +2,7 @@
 # but more permissive about image size due to read-only requirement in openshift
 # FROM daskdev/dask:2.9.0
 FROM continuumio/miniconda3:24.5.0-0
+ARG CERTIFICATE_VERSION=1.133IGTFNEW
 
 RUN apt-get update -y && apt-get install gnupg2 netcat-traditional jq -y
 
@@ -17,8 +18,8 @@ RUN apt update && \
 
 RUN mkdir -p /etc/grid-security/
 RUN export X509_CERT_DIR=/etc/grid-security/certificates/
-RUN wget https://repo.opensciencegrid.org/cadist/1.132IGTFNEW/osg-certificates-1.132IGTFNEW.tar.gz
-RUN tar -xvf osg-certificates-1.132IGTFNEW.tar.gz -C /etc/grid-security/
+RUN wget https://repo.opensciencegrid.org/cadist/${CERTIFICATE_VERSION}/osg-certificates-${CERTIFICATE_VERSION}.tar.gz
+RUN tar -xvf osg-certificates-${CERTIFICATE_VERSION}.tar.gz -C /etc/grid-security/
 
 RUN useradd -ms /bin/bash output -G sudo && passwd -d output
 RUN mkdir -p /etc/grid-security/certificates /etc/grid-security/vomsdir
