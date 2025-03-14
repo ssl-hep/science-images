@@ -2,7 +2,7 @@
 # but more permissive about image size due to read-only requirement in openshift
 # FROM daskdev/dask:2.9.0
 FROM continuumio/miniconda3:24.5.0-0
-ARG CERTIFICATE_VERSION=1.133IGTFNEW
+ARG CERTIFICATE_VERSION=1.134IGTFNEW
 
 RUN apt-get update -y && apt-get install gnupg2 netcat-traditional jq -y
 
