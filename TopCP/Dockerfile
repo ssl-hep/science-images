@@ -18,7 +18,7 @@ WORKDIR /
 RUN --mount=type=secret,id=GIT_KEY,env=GIT_KEY\
     git clone https://${GIT_KEY}@gitlab.cern.ch/atlas-physics/beauty/common-tools/TopCPToolkit.git
 WORKDIR /TopCPToolkit
-RUN   git fetch -a && git checkout bphy-algorithms
+RUN   git fetch -a && git checkout 06949e9ffd014e4845a4ccac88e49e1e837b2b49
 
 # Make /TopCPToolkit/run directory where runTop_el.py is executed
 RUN mkdir -p run
