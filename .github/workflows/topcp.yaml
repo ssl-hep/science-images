@@ -27,8 +27,8 @@ jobs:
           context: TopCP
           push: ${{ github.ref == 'refs/heads/main' }}
           build-args: |
-            ANALYSISBASE_TAG=${ANALYSISBASE_TAG}
-            TOPCPTOOLKIT_TAG=${TOPCPTOOLKIT_TAG}
+            ANALYSIS_BASE_VERSION=${{ env.ANALYSISBASE_TAG }}
+            TOPCPTOOLKIT_TAG=${{ env.TOPCPTOOLKIT_TAG }}
             GIT_KEY=${{ secrets.GITLAB_TOKEN }}
           tags: sslhep/servicex_science_image_topcp:${{ env.TOPCPTOOLKIT_TAG }}-${{ env.ANALYSISBASE_TAG }}
           platforms: linux/amd64,linux/arm64
