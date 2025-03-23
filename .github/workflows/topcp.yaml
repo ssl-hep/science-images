@@ -24,7 +24,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: TopCPToolkit
+          context: TopCP
           push: ${{ github.ref == 'refs/heads/main' }}
           build-args: |
             ANALYSISBASE_TAG=${ANALYSISBASE_TAG}
