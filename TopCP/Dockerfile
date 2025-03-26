@@ -2,8 +2,8 @@
 
 # This is the default AnalysisBase version
 ARG ANALYSIS_BASE_VERSION=25.2.45
-FROM gitlab-registry.cern.ch/atlas/athena/analysisbase:${ANALYSIS_BASE_VERSION} AS base
-ARG TOPCPTOOLKIT_TAG=2.17.0
+FROM gitlab-registry.cern.ch/atlas/athena/analysisbase:${ANALYSIS_BASE_VERSION}
+ARG TOPCPTOOLKIT_BLS_TAG=v2.17.0_v0.1
 
 SHELL [ "/bin/bash", "-c" ]
 
@@ -18,7 +18,7 @@ WORKDIR /
 RUN --mount=type=secret,id=GIT_KEY,env=GIT_KEY\
     git clone https://${GIT_KEY}@gitlab.cern.ch/atlas-physics/beauty/common-tools/TopCPToolkit.git
 WORKDIR /TopCPToolkit
-RUN   git fetch -a && git checkout 06949e9ffd014e4845a4ccac88e49e1e837b2b49
+RUN   git fetch -a && git checkout ${TOPCPTOOLKIT_BLS_TAG}
 
 # Make /TopCPToolkit/run directory where runTop_el.py is executed
 RUN mkdir -p run
