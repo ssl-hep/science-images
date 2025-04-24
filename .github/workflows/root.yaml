@@ -27,7 +27,7 @@ jobs:
       - name: Build and push ROOT
         uses: docker/build-push-action@v3
         with:
-          context: ROOT
+          context: root
           push: ${{ github.ref == 'refs/heads/main' }}
           build-args: |
             ROOTVER=${{ env.ROOTVER }}
