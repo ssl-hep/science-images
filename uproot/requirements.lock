@@ -785,9 +785,9 @@ typing-extensions==4.12.2 \
     --hash=sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d \
     --hash=sha256:1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8
     # via dask-awkward
-uproot==5.6.0 \
-    --hash=sha256:90612ceccd11ea7d60645065611d3185360995631f7f3dc693c1222cd433c85e \
-    --hash=sha256:eb5c2add21090d4ba30c7c1b87d7678fac52473191285bec7d9a845b2018fc08
+uproot==5.6.1 \
+    --hash=sha256:82e87c5676d37a4b694e27f1be17973df9b55200ccf80cc0d56d298af970c1ba \
+    --hash=sha256:c58aaf5521e09c547ab0ef9de4915da3a9556b1827e207b9fd59f7ce8355bf19
     # via -r requirements.txt
 urllib3==2.2.3 \
     --hash=sha256:ca899ca043dcb1bafa3e262d73aa25c465bfb49e0bd9dd5d59f1d0acba2f8fac \
