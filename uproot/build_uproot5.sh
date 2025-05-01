@@ -1,1 +1,1 @@
-docker build -t sslhep/servicex_func_adl_uproot_transformer:uproot5 .
+docker build -t sslhep/servicex_func_adl_uproot_transformer:5.6.1 .
