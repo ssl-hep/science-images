@@ -1,9 +1,9 @@
 # syntax=docker/dockerfile:1
 
 # This is the default AnalysisBase version
-ARG ANALYSIS_BASE_VERSION=25.2.38 
+ARG ANALYSIS_BASE_VERSION=25.2.50
 FROM gitlab-registry.cern.ch/atlas/athena/analysisbase:${ANALYSIS_BASE_VERSION} AS base
-ARG TOPCPTOOLKIT_TAG=2.16.1
+ARG TOPCPTOOLKIT_TAG=2.18.0
 
 SHELL [ "/bin/bash", "-c" ]
 
