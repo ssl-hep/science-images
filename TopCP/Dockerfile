@@ -1,9 +1,11 @@
 # syntax=docker/dockerfile:1
 
 # This is the default AnalysisBase version
-ARG ANALYSIS_BASE_VERSION=25.2.45
+ARG ANALYSIS_BASE_VERSION=25.2.50
 FROM gitlab-registry.cern.ch/atlas/athena/analysisbase:${ANALYSIS_BASE_VERSION}
-ARG TOPCPTOOLKIT_BLS_TAG=v2.17.0_v0.1
+ARG TOPCPTOOLKIT_TAG=v2.18.0
+ARG GITLAB_PROJECT="atlas-physics/beauty/common-tools"
+ARG BLS_TAG=v0.2
 
 SHELL [ "/bin/bash", "-c" ]
 
@@ -16,9 +18,9 @@ RUN yum install -y nc
 # download TopCPToolkit repo
 WORKDIR /
 RUN --mount=type=secret,id=GIT_KEY,env=GIT_KEY\
-    git clone https://${GIT_KEY}@gitlab.cern.ch/atlas-physics/beauty/common-tools/TopCPToolkit.git
+    git clone https://${GIT_KEY}@gitlab.cern.ch/${GITLAB_PROJECT}/TopCPToolkit.git
 WORKDIR /TopCPToolkit
-RUN   git fetch -a && git checkout ${TOPCPTOOLKIT_BLS_TAG}
+RUN   git fetch -a && git checkout ${TOPCPTOOLKIT_TAG}_${BLS_TAG}
 
 # Make /TopCPToolkit/run directory where runTop_el.py is executed
 RUN mkdir -p run
