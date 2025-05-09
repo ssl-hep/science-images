@@ -4,9 +4,8 @@ on:
 
 env:
   ANALYSISBASE_TAG: 25.2.50
-  TOPCPTOOLKIT_TAG: v2.18.0
+  TOPCPTOOLKIT_TAG: v2.18.0_v0.2
   GITLAB_PROJECT: "atlas-physics/beauty/common-tools"
-  BLS_TAG: v0.2
 
 jobs:
   docker:
@@ -32,8 +31,7 @@ jobs:
             ANALYSIS_BASE_VERSION=${{ env.ANALYSISBASE_TAG }}
             TOPCPTOOLKIT_TAG=${{ env.TOPCPTOOLKIT_TAG }}
             GITLAB_PROJECT=${{ env.GITLAB_PROJECT }}
-            BLS_TAG=${{ env.BLS_TAG }}
           secrets: |
             GIT_KEY=${{ secrets.GITLAB_TOKEN }}
-          tags: sslhep/servicex_science_image_topcp:${{ env.ANALYSISBASE_TAG }}-${{ env.TOPCPTOOLKIT_TAG }}-${{ env.BLS_TAG }}
+          tags: sslhep/servicex_science_image_topcp:${{ env.ANALYSISBASE_TAG }}-${{ env.TOPCPTOOLKIT_TAG }}
           platforms: linux/amd64,linux/arm64
