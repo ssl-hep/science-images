@@ -1,8 +1,9 @@
 # based on https://github.com/dask/dask-docker/blob/master/base/Dockerfile
 # but more permissive about image size due to read-only requirement in openshift
 # FROM daskdev/dask:2.9.0
-FROM continuumio/miniconda3:24.5.0-0
+FROM condaforge/miniforge3:24.11.3-2
 ARG CERTIFICATE_VERSION=1.135IGTFNEW
+
 
 RUN apt-get update -y && apt-get install gnupg2 netcat-traditional jq -y
 
