@@ -4,7 +4,8 @@
 ARG ROOTVER=6.32.04
 ARG PLATFORM=ubuntu24.04
 FROM rootproject/root:${ROOTVER}-${PLATFORM}
-ARG CERTIFICATE_VERSION=1.134IGTFNEW
+# This is the version of the OSG certificates to be downloaded (same meaning as for the uproot container)
+ARG CERTIFICATE_VERSION=1.135IGTFNEW
 
 RUN apt update -y && apt upgrade -y && \
     apt-get install gnupg2 netcat-traditional jq sudo xrootd-client -y
