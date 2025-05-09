@@ -2,9 +2,9 @@ FROM cmsopendata/cmssw_5_3_32:latest
 
 USER root
 
-RUN yum clean all
-RUN yum -y update
-RUN yum -y install nc jq
+# Fix a repo key in the container
+RUN sed -i 's/EUGridPMA-RPM-3/EUGridPMA-RPM-4/' /etc/yum.repos.d/EGI-trustanchors.repo
+RUN yum clean all &&  yum -y update && yum -y install nc jq
 
 ADD gai.conf /etc/gai.conf
 
