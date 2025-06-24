@@ -3,8 +3,8 @@ on:
   push:
 
 env:
-  ROOTVER: 6.32.04
-  PLATFORM: ubuntu24.04
+  ROOTVER: 6.36.00
+  PLATFORM: ubuntu25.04
 
 
 jobs:
