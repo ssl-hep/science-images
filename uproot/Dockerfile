@@ -30,7 +30,7 @@ COPY requirements.txt .
 COPY requirements.lock .
 RUN /opt/conda/bin/pip install safety==1.9.0
 
-RUN safety check -r requirements.lock -i 44715 -i44716 -i 44717
+RUN safety check -r requirements.lock
 RUN /opt/conda/bin/pip --no-cache-dir install \
     --upgrade \
     --no-deps \
