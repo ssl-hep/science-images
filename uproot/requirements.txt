@@ -1,6 +1,6 @@
-uproot[xrootd,http,s3]==5.6.3
-awkward==2.8.3
-dask-awkward==2025.3.0
-vector==1.6.1
-pyarrow==20.0.0
+uproot[xrootd,http,s3]==5.6.4
+awkward==2.8.6
+dask-awkward==2025.5.0
+vector==1.6.3
+pyarrow==21.0.0
 tenacity==9.1.2
