@@ -2,7 +2,7 @@
 authors = ["Peter Onyisi <ponyisi@utexas.edu>"]
 channels = ["conda-forge"]
 name = "combined_root"
-platforms = ["linux-64"]
+platforms = ["linux-64", "linux-aarch64"]
 version = "0.1.0"
 
 [tasks]
