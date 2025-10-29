@@ -10,7 +10,7 @@ RUN if [[ $EL == 7 ]] ; then { \
         sed -i -e 's/linuxsoft.cern.ch\/internal/dl.fedoraproject.org\/pub/g' /etc/yum.repos.d/epel.repo ; \
         sed -i -e 's/linuxsoft.cern.ch\/epel/dl.fedoraproject.org\/pub\/archive\/epel/g' /etc/yum.repos.d/epel.repo ; \
     } ; else { \
-        dnf install -y epel-release ; \
+        dnf install -y epel-release; \
     } ; fi
 RUN curl -s -o /etc/pki/rpm-gpg/RPM-GPG-KEY-wlcg https://linuxsoft.cern.ch/wlcg/RPM-GPG-KEY-wlcg \
     && if [[ $EL == 7 ]] ; then { \
@@ -19,9 +19,10 @@ RUN curl -s -o /etc/pki/rpm-gpg/RPM-GPG-KEY-wlcg https://linuxsoft.cern.ch/wlcg/
         curl -s -o /etc/yum.repos.d/wlcg-el${EL}.repo http://linuxsoft.cern.ch/wlcg/wlcg-el${EL}.repo ; \
     } ; fi
 RUN if [[ $EL == 7 ]] ; then { \
-        yum install -y https://repo.opensciencegrid.org/osg/3.6/osg-3.6-el${EL}-release-latest.rpm  ; \
+        yum-config-manager --add-repo https://repo.osg-htc.org/osg/3.6/el7/release/x86_64/ ; \
+        rpm --import https://repo.osg-htc.org/osg/RPM-GPG-KEY-OSG-2 ; \
     } ; else { \
-        yum install -y https://repo.osg-htc.org/osg/24-main/osg-24-main-el9-release-latest.rpm ; \
+        yum install -y https://repo.osg-htc.org/osg/25-main/osg-25-main-el9-release-latest.rpm ; \
     } ; fi \
     && yum -y update \
     && yum -y install nc jq \

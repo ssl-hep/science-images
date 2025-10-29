@@ -11,7 +11,7 @@ SHELL [ "/bin/bash", "-c" ]
 USER root
 
 RUN yum update -y
-RUN yum install -y https://repo.opensciencegrid.org/osg/3.6/osg-3.6-el9-release-latest.rpm && yum install -y osg-ca-certs 
+RUN yum install -y https://repo.osg-htc.org/osg/25-main/osg-25-main-el9-release-latest.rpm && yum install -y osg-ca-certs 
 RUN yum install -y nc
 
 # download TopCPToolkit repo
