@@ -30,7 +30,7 @@ RUN if [[ $EL == 7 ]] ; then { \
     && yum -y update \
     && yum -y install nc jq \
     && yum install -y xrootd-client xrootd \
-        xrootd-voms voms-clients wlcg-voms-atlas osg-ca-certs \
+        xrootd-voms voms-clients osg-ca-certs \
     && yum clean all
 
 # download TopCPToolkit repo
