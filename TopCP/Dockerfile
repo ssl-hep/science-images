@@ -10,9 +10,17 @@ SHELL [ "/bin/bash", "-c" ]
 
 USER root
 
-RUN yum update -y
-RUN yum install -y https://repo.opensciencegrid.org/osg/3.6/osg-3.6-el9-release-latest.rpm && yum install -y osg-ca-certs 
-RUN yum install -y nc
+RUN dnf install -y epel-release
+
+RUN curl -s -o /etc/pki/rpm-gpg/RPM-GPG-KEY-wlcg https://linuxsoft.cern.ch/wlcg/RPM-GPG-KEY-wlcg \
+    && curl -s -o /etc/yum.repos.d/wlcg-el${EL}.repo http://linuxsoft.cern.ch/wlcg/wlcg-el${EL}.repo
+
+RUN yum install -y https://repo.osg-htc.org/osg/24-main/osg-24-main-el9-release-latest.rpm \
+    && yum -y update \
+    && yum -y install nc jq \
+    && yum install -y xrootd-client xrootd \
+        xrootd-voms voms-clients osg-ca-certs \
+    && yum clean all
 
 # download TopCPToolkit repo
 WORKDIR /
