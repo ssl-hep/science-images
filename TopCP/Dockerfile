@@ -14,7 +14,7 @@ USER root
 RUN yum install -y https://repo.osg-htc.org/osg/24-main/osg-24-main-el9-release-latest.rpm \
     && yum -y update \
     && yum -y install nc \
-    && yum install -y xrootd-client xrootd osg-ca-certs \
+    && yum install -y osg-ca-certs \
     && yum clean all
 
 # download TopCPToolkit repo
