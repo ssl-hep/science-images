@@ -19,7 +19,9 @@ RUN curl -s -o /etc/pki/rpm-gpg/RPM-GPG-KEY-wlcg https://linuxsoft.cern.ch/wlcg/
         curl -s -o /etc/yum.repos.d/wlcg-el${EL}.repo http://linuxsoft.cern.ch/wlcg/wlcg-el${EL}.repo ; \
     } ; fi
 RUN if [[ $EL == 7 ]] ; then { \
-        yum install -y https://repo.osg-htc.org/osg/3.6/osg-3.6-el${EL}-release-latest.rpm  ; \
+        yum install -y https://repo.osg-htc.org/osg/3.6/osg-3.6-el${EL}-release-latest.rpm && \
+        sed -i 's|^mirrorlist=.*|#mirrorlist=|' /etc/yum.repos.d/osg.repo && \
+        sed -i 's|^#baseurl=http|baseurl=http|' /etc/yum.repos.d/osg.repo ; \
     } ; else { \
         yum install -y https://repo.osg-htc.org/osg/24-main/osg-24-main-el9-release-latest.rpm ; \
     } ; fi \
