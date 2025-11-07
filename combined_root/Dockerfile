@@ -6,7 +6,7 @@ FROM almalinux/$PLATFORM
 RUN dnf install -y epel-release && \
     dnf config-manager --set-enabled crb && \
     dnf update -y && \
-    dnf install -y https://repo.opensciencegrid.org/osg/24-main/osg-24-main-el9-release-latest.rpm && \
+    dnf install -y https://repo.opensciencegrid.org/osg/25-main/osg-25-main-el9-release-latest.rpm && \
     dnf upgrade -y
 RUN dnf install -y nc osg-ca-certs sudo
 
