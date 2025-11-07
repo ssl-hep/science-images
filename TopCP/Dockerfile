@@ -11,7 +11,7 @@ SHELL [ "/bin/bash", "-c" ]
 USER root
 
 # Install OSG repo and xrootd client
-RUN yum install -y https://repo.osg-htc.org/osg/24-main/osg-24-main-el9-release-latest.rpm \
+RUN yum install -y https://repo.osg-htc.org/osg/25-main/osg-25-main-el9-release-latest.rpm \
     && yum -y update \
     && yum -y install nc \
     && yum install -y osg-ca-certs \

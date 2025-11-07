@@ -10,7 +10,7 @@ RUN if [[ $EL == 7 ]] ; then { \
         sed -i -e 's/linuxsoft.cern.ch\/internal/dl.fedoraproject.org\/pub/g' /etc/yum.repos.d/epel.repo ; \
         sed -i -e 's/linuxsoft.cern.ch\/epel/dl.fedoraproject.org\/pub\/archive\/epel/g' /etc/yum.repos.d/epel.repo ; \
     } ; else { \
-        dnf install -y epel-release ; \
+        dnf install -y epel-release; \
     } ; fi
 RUN curl -s -o /etc/pki/rpm-gpg/RPM-GPG-KEY-wlcg https://linuxsoft.cern.ch/wlcg/RPM-GPG-KEY-wlcg \
     && if [[ $EL == 7 ]] ; then { \
@@ -23,7 +23,7 @@ RUN if [[ $EL == 7 ]] ; then { \
         sed -i 's|^mirrorlist=.*|#mirrorlist=|' /etc/yum.repos.d/osg.repo && \
         sed -i 's|^#baseurl=http|baseurl=http|' /etc/yum.repos.d/osg.repo ; \
     } ; else { \
-        yum install -y https://repo.osg-htc.org/osg/24-main/osg-24-main-el9-release-latest.rpm ; \
+        yum install -y https://repo.osg-htc.org/osg/25-main/osg-25-main-el9-release-latest.rpm ; \
     } ; fi \
     && yum -y update \
     && yum -y install nc jq \
