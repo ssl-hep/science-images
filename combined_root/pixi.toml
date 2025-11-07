@@ -1,0 +1,20 @@
+[workspace]
+authors = ["Peter Onyisi <ponyisi@utexas.edu>"]
+channels = ["conda-forge"]
+name = "combined_root"
+platforms = ["linux-64", "linux-aarch64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = "3.13.*"
+safety = "==1.9.0"
+pandas = ">=2.3.3,<3"
+awkward = ">=2.8.10"
+tenacity = "==9.1.2"
+vector = "==1.7.0"
+
+[pypi-dependencies]
+pyarrow = "==22.0.0"
+
