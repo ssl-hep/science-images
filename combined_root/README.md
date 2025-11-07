@@ -5,7 +5,7 @@ This image includes both CERN ROOT libraries and uproot/awkward in a unified bas
 ## Updating package versions
 
 * Updating to a new CERN ROOT version requires an update to the ROOTVER argument of the Dockerfile.
-* Updating to a new uproot version requries an update to the UPROOTVER argument of the Dockerfile.
+* Updating to a new uproot version requires an update to the UPROOTVER argument of the Dockerfile.
 * Note that these above two are overridden in the GitHub CI/CD, which is the primary control point.
 * Updating other packages requires changes to the pixi.toml dependencies/pypi-dependencies sections.
 
