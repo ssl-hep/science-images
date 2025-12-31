@@ -1,5 +1,5 @@
-uproot[xrootd,http,s3]==5.6.4
-awkward==2.8.6
+uproot[xrootd,http,s3]==5.6.9
+awkward==2.8.11
 dask-awkward==2025.5.0
 vector==1.6.3
 pyarrow==21.0.0
