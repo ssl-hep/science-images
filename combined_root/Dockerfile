@@ -20,8 +20,8 @@ RUN . ~/.bashrc && pixi install
 RUN . ~/.bashrc && pixi add root==${ROOTVER} && \
     pixi add --pypi uproot[xrootd,http,s3]==${UPROOTVER} && \
     rm -rf ~/.cache/rattler
-# ignore the safety alert on safety itself
-RUN . ~/.bashrc && pixi run safety check -i 51358
+# ignore the safety alert on safety itself and a Windows-only nbconvert issue
+RUN . ~/.bashrc && pixi run safety check -i 51358 -i 83150
 
 WORKDIR /servicex
 COPY proxy-exporter.sh .
