@@ -3,8 +3,8 @@ on:
   push:
 
 env:
-  ANALYSISBASE_TAG: 25.2.66
-  TOPCPTOOLKIT_TAG: v2.22.0
+  ANALYSISBASE_TAG: 25.2.74
+  TOPCPTOOLKIT_TAG: v2.23.0
   GITLAB_PROJECT: "atlasphys-top/reco"
 
 jobs:
