@@ -1,10 +1,10 @@
 # syntax=docker/dockerfile:1
 
 # This is the default AnalysisBase version
-ARG ANALYSIS_BASE_VERSION=25.2.50
+ARG ANALYSIS_BASE_VERSION=25.2.74
 FROM gitlab-registry.cern.ch/atlas/athena/analysisbase:${ANALYSIS_BASE_VERSION}
-ARG TOPCPTOOLKIT_TAG=v2.18.0_v0.2
-ARG GITLAB_PROJECT="atlas-physics/beauty/common-tools"
+ARG TOPCPTOOLKIT_TAG=v2.23.0
+ARG GITLAB_PROJECT="atlasphys-top/reco"
 
 SHELL [ "/bin/bash", "-c" ]
 
