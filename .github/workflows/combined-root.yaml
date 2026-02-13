@@ -3,8 +3,8 @@ on:
   push:
 
 env:
-  ROOTVER: 6.36.04
-  UPROOTVER: 5.6.7
+  ROOTVER: 6.36.08
+  UPROOTVER: 5.6.9
 
 jobs:
   docker:
