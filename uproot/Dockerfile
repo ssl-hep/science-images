@@ -28,9 +28,9 @@ ADD gai.conf /etc/gai.conf
 
 COPY requirements.txt .
 COPY requirements.lock .
-RUN /opt/conda/bin/pip install safety==1.9.0
+RUN /opt/conda/bin/pip install pip_audit
 
-RUN safety check -r requirements.lock
+RUN /opt/conda/bin/python -m pip_audit -r requirements.lock
 RUN /opt/conda/bin/pip --no-cache-dir install \
     --upgrade \
     --no-deps \
