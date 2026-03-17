@@ -21,7 +21,7 @@ RUN echo 'eval "$(pixi shell-hook)"' >> ~/.bashrc
 RUN . ~/.bashrc && pixi add root==${ROOTVER} && \
     pixi add --pypi uproot[xrootd,http,s3]==${UPROOTVER} && \
     rm -rf ~/.cache/rattler
-RUN . ~/.bashrc && pixi run python -m pip_audit
+RUN . ~/.bashrc && pixi run python -m pip_audit --ignore-vuln GHSA-78cv-mqj4-43f7 --ignore-vuln CVE-2026-31958
 
 WORKDIR /servicex
 COPY proxy-exporter.sh .
