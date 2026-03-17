@@ -13,8 +13,9 @@ pandas = ">=2.3.3,<3"
 awkward = ">=2.8.10"
 tenacity = "==9.1.2"
 vector = "==1.7.0"
+dask-awkward = "==2025.5.0"
 
 [pypi-dependencies]
-pyarrow = "==22.0.0"
+pyarrow = "==23.*"
 pip-audit = ">=2.10.0, <3"
 
