@@ -5,10 +5,12 @@ FROM almalinux/$PLATFORM
 
 RUN dnf install -y epel-release && \
     dnf config-manager --set-enabled crb && \
-    dnf update -y && \
+    rpm --import http://linuxsoft.cern.ch/wlcg/RPM-GPG-KEY-wlcg && \
+    dnf config-manager --add-repo https://linuxsoft.cern.ch/wlcg/wlcg-el9.repo && \
+    dnf config-manager --enable wlcg && \
     dnf install -y https://repo.opensciencegrid.org/osg/25-main/osg-25-main-el9-release-latest.rpm && \
     dnf upgrade -y
-RUN dnf install -y nc osg-ca-certs sudo jq
+RUN dnf install -y nc osg-ca-certs sudo jq HEP_OSlibs
 
 RUN useradd -ms /bin/bash output -G wheel && passwd -d output
 RUN mkdir -p /etc/grid-security/certificates /etc/grid-security/vomsdir
