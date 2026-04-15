@@ -19,3 +19,8 @@ The release 25 image tracks the latest published `25.2.x` `analysisbase` tag fro
 - The Dockerfile references the CERN registry directly, so the tag update should always be based on the registry contents, not on the local default in the file.
 - Keep the build script and workflow in sync. They are intentionally redundant so local builds and CI produce the same release tag.
 - Full AnalysisBase release information is available behind CERN ATLAS authentication here: https://twiki.cern.ch/twiki/bin/viewauth/AtlasProtected/AnalysisRelease
+
+## Testing
+
+After building the image, run `docker run --rm <image> sh -lc '. ./release_setup.sh'`.
+The command should print two paths. The second path should contain the release tag you built against, for example `25.2.89` for release 25.
