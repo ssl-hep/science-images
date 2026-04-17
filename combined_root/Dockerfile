@@ -1,5 +1,5 @@
-ARG ROOTVER=6.36.04
-ARG UPROOTVER=5.6.7
+ARG ROOTVER=6.38.04
+ARG UPROOTVER=5.7.3
 ARG PLATFORM=9-base
 FROM almalinux/$PLATFORM
 
@@ -23,7 +23,7 @@ RUN echo 'eval "$(pixi shell-hook)"' >> ~/.bashrc
 RUN . ~/.bashrc && pixi add root==${ROOTVER} && \
     pixi add --pypi uproot[xrootd,http,s3]==${UPROOTVER} && \
     rm -rf ~/.cache/rattler
-RUN . ~/.bashrc && pixi run python -m pip_audit --ignore-vuln GHSA-78cv-mqj4-43f7 --ignore-vuln CVE-2026-31958
+RUN . ~/.bashrc && pixi run python -m pip_audit
 
 WORKDIR /servicex
 COPY proxy-exporter.sh .
