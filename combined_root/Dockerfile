@@ -1,5 +1,5 @@
 ARG ROOTVER=6.38.04
-ARG UPROOTVER=5.7.3
+ARG UPROOTVER=5.7.4
 ARG PLATFORM=9-base
 FROM almalinux/$PLATFORM
 
@@ -20,7 +20,7 @@ COPY pixi.lock pixi.toml ./
 ARG ROOTVER UPROOTVER
 RUN . ~/.bashrc && pixi install
 RUN echo 'eval "$(pixi shell-hook)"' >> ~/.bashrc
-RUN . ~/.bashrc && pixi add root==${ROOTVER} && \
+RUN . ~/.bashrc && pixi add root_base==${ROOTVER} && \
     pixi add --pypi uproot[xrootd,http,s3]==${UPROOTVER} && \
     rm -rf ~/.cache/rattler
 RUN . ~/.bashrc && pixi run python -m pip_audit
