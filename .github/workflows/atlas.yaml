@@ -28,9 +28,9 @@ jobs:
           context: ATLASxAOD
           push: ${{ github.ref == 'refs/heads/main' }}
           build-args: |
-            ANALYSISBASE_TAG=25.2.80
+            ANALYSISBASE_TAG=25.2.89
             EL=9
-          tags: sslhep/servicex_func_adl_xaod_transformer:25.2.80
+          tags: sslhep/servicex_func_adl_xaod_transformer:25.2.89
           platforms: linux/amd64,linux/arm64
 
       - name: Build and push R22

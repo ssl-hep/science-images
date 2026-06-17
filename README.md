@@ -17,3 +17,4 @@ To update the ATLASxAOD version for a specific release, the version string must 
 
 - 2 places in `ATLASxAOD/build_r25.sh`
 - 2 places in `.github/workflows/atlas.yaml` (the `ANALYSISBASE_TAG` variable and the `sslhep/servicex_func_adl_xaod_transformer` image tag)
+- `ATLASxAOD/README.md` documents the update procedure for this image family
