@@ -16,7 +16,8 @@ vector = "==1.7.0"
 numba = ">=0.65.1,<0.66"
 
 [pypi-dependencies]
-pyarrow = "==23.*"
+pyarrow = "==24.*"
 pip-audit = ">=2.10.0, <3"
 dask-awkward = "==2026.2.1"
+coffea = ">=2026.5.0, <2027"
 
