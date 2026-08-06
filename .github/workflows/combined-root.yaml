@@ -1,6 +1,8 @@
 name: Builds uproot+ROOT images
 on:
   push:
+  schedule:
+    - cron: "0 23 * * *"
 
 env:
   ROOTVER: 6.38.04
@@ -27,7 +29,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: combined_root
-          push: ${{ github.ref == 'refs/heads/main' }}
+          push: ${{ github.ref == 'refs/heads/main' && github.event_name != 'schedule' }}
           build-args: |
             ROOTVER=${{ env.ROOTVER }}
             UPROOTVER=${{ env.UPROOTVER }}
