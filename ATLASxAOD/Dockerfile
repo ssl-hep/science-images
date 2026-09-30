@@ -1,4 +1,4 @@
-ARG ANALYSISBASE_TAG=25.2.38
+ARG ANALYSISBASE_TAG=25.2.89
 
 FROM atlas/analysisbase:$ANALYSISBASE_TAG
 FROM gitlab-registry.cern.ch/atlas/athena/analysisbase:$ANALYSISBASE_TAG
