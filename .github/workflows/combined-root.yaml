@@ -5,8 +5,8 @@ on:
     - cron: "0 23 * * *"
 
 env:
-  ROOTVER: 6.38.04
-  UPROOTVER: 5.7.4
+  ROOTVER: 6.40.04
+  UPROOTVER: 5.7.6
 
 jobs:
   docker:
